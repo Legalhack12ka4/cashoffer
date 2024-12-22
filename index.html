@@ -137,7 +137,7 @@
       border: none;
       outline: none;
       padding: 10px 15px;
-      font-size: 16px;
+      font-size: 14px;
       flex: 1;
       border-radius: 25px 0 0 25px;
     }
@@ -151,7 +151,7 @@
       color: white;
       border: none;
       padding: 10px 20px;
-      font-size: 16px;
+      font-size: 14px;
       border-radius: 0 25px 25px 0;
       cursor: pointer;
       transition: background-color 0.3s ease;
@@ -186,7 +186,7 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 14px;
       padding: 7px;
       border-radius: 20px;
       margin-right: 3px;
@@ -266,6 +266,18 @@
       font-weight: bold;
     }
 
+    .imageContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 800px) {
+      .imageContainer {
+      display: grid;
+     place-content: center;
+    }
+  }
     /* Testiominialo */
     .testimonial-container {
       position: relative;
@@ -384,7 +396,8 @@
   </header>
 
   <section class="hero">
-    <h1><span style="color: #254c86;">SoCal's #1 Platform For</span> <br /> <span>Selling Off-Market Properties</h1></span>
+    <h1><span style="color: #254c86;">SoCal's #1 Platform For</span> <br /> <span>Selling Off-Market Properties</h1>
+    </span>
     <p>Manage no-risk offers through an unparalleled dashboard.<br /> Absolutely ZERO commissions.</p>
     <div class="input-container">
       <input type="text" placeholder="Enter your address">
@@ -396,9 +409,10 @@
 
 
   <section class="section" style="background-color: #f1f5f8;">
-    <h2><span style="color: #41526c; font-weight: 100;">How To Sell Your Property </span> <span style="color: #2a4887;"> With Cash Offrs </span></h2>
-    <hr style="width: 40px; margin-top: -21px; border: 1px solid #3787b0;"/>
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <h2><span style="color: #41526c; font-weight: 100;">How To Sell Your Property </span> <span style="color: #2a4887;">
+        With Cash Offrs </span></h2>
+    <hr style="width: 40px; margin-top: -21px; border: 1px solid #3787b0;" />
+    <div class="imageContainer">
       <div style="flex: 1; max-width: 500px; padding: 10px;">
         <img src="images/sellhouse.png" alt="How to Sell Your Property" style="width: 100%; border-radius: 8px;">
       </div>
@@ -431,28 +445,41 @@
       </div>
     </div>
     <div style="text-align: center; margin-top: 20px;">
-      <p>Your Listing Is Marketed To Hundreds of Local Investors And <br />
+      <p style="font-weight: bold;">Your Listing Is Marketed To Hundreds of Local Investors And <br />
         Agents To Increase Your Properties Exposure To Motivated Buyers.</p>
       <button
-        style="padding: 10px 20px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; font-size: 1.2rem; cursor: pointer;">
+        style="padding: 10px 20px; margin-bottom:20px; background-color: #007bff; color: #fff; border: none; border-radius: 20px; font-size: 1.2rem; cursor: pointer;">
         Sell My House
       </button>
+      <button
+      style="padding: 10px 20px; background-color: #294c87; color: #fff; border: none; border-radius: 20px; font-size: 1.2rem; cursor: pointer;">
+      Or call (855) 961-5403
+    </button>
     </div>
   </section>
 
 
   <section class="section" style="background-color: #fff;">
-    <h2>No Matter The Situation, Cash Offrs Will Get Your Property Sold!</h2>
+    <h2><span style="color: #41526c; font-weight: 100;">No Matter The Situation, </span> <br/><span style="color: #2a4887;">
+      Cash Offrs will Get Your Property Sold! </span></h2>
+  <hr style="width: 40px; margin-top: -21px; border: 1px solid #3787b0;" />
+
     <div class="cards">
 
       <img src="images/nomatter.png" alt="How to Sell Your Property" style="width: 100%; border-radius: 8px;">
     </div>
-    <button> Lwarn More</button>
+    <button
+        style="padding: 10px 20px; margin-top: 20px; background-color: #007bff; color: #fff; border: none; border-radius: 20px; font-size: 1.2rem; cursor: pointer;">
+        Learn More
+      </button>
   </section>
 
 
   <section class="section" style="background-color: #f1f5f8;">
-    <h2>Testimonials From Happy Clients</h2>
+    <h2><span style="color: #41526c; font-weight: 100;">Testimonials From</span> <span style="color: #2a4887;">
+      Happy Clients </span></h2>
+  <hr style="width: 40px; margin-top: -21px; border: 1px solid #3787b0;" />
+ 
     <div class="testimonial-container">
       <button class="arrow left" onclick="moveSlide(-1)">&lt;</button>
       <div class="testimonial-slider">
@@ -480,7 +507,7 @@
             <span class="stars">★★★★★</span> -->
           </div>
         </div>
-  
+
       </div>
       <button class="arrow right" onclick="moveSlide(1)">&gt;</button>
     </div>
