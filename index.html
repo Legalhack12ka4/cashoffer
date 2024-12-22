@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CashOffrs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #f7f8fa;
+      flex-wrap: wrap;
+      /* Allow wrapping for smaller screens */
+      /* border-bottom: 1px solid #ddd; */
+    }
+
+    .header-container {
+      display: contents;
+      align-items: center;
+      /* Align logo and hamburger vertically */
+    }
+
+    header img {
+      max-height: 50px;
+      /* margin-bottom: 10px; */
+      /* Add space when items wrap */
+    }
+
+    /* header nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap; 
+            justify-content: center; 
+        } */
+
+    header nav a {
+      text-decoration: none;
+      color: #000;
+      /* font-weight: bold; */
+      display: flex;
+      align-items: center;
+    }
+
+    header nav a button {
+      background: #038ff0;
+      color: white;
+      border: none;
+      height: 35px;
+      width: 82px;
+      border-radius: 20px;
+    }
+
+    .signin {
+      background: #294c87;
+    }
+
+    /* Base styles for the hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      transition: 0.3s;
+    }
+
+    /* Hide navigation by default for smaller screens */
+    header nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      transition: 0.3s;
+    }
+
+    header nav.hidden {
+      display: none;
+    }
+
+    @media (max-width: 1150px) {
+      .hamburger {
+        display: flex;
+        /* Show hamburger on smaller screens */
+      }
+
+      header nav {
+        display: none;
+        /* Hide navigation by default */
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background-color: #f7f8fa;
+        padding: 10px 20px;
+      }
+
+      header nav.visible {
+        display: flex;
+        /* Show navigation when toggled */
+      }
+    }
+
+    /* Input and sell button */
+
+    .input-container {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      overflow: hidden;
+      background-color: #fff;
+      max-width: 400px;
+      margin: 20px auto;
+      /* Center align */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .input-container input {
+      border: none;
+      outline: none;
+      padding: 10px 15px;
+      font-size: 16px;
+      flex: 1;
+      border-radius: 25px 0 0 25px;
+    }
+
+    .input-container input::placeholder {
+      color: #aaa;
+    }
+
+    .input-container button {
+      background-color: #038ff0;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 0 25px 25px 0;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .input-container button:hover {
+      background-color: #026ecb;
+    }
+
+
+
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+      background-color: #f8f9fa;
+    }
+
+    .hero h1 {
+      color: #007bff;
+      font-size: 2.5rem;
+    }
+
+    .hero p {
+      margin: 20px 0;
+      font-size: 1.2rem;
+    }
+
+    .hero button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 7px;
+      border-radius: 20px;
+      margin-right: 3px;
+    }
+
+    .section {
+      padding: 50px 20px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .section:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+
+    .section h2 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .section p {
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+    }
+
+    .cards {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 300px;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 {
+      color: #007bff;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .steps {
+      text-align: left;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .steps li {
+      margin: 10px 0;
+      font-size: 1.1rem;
+    }
+
+    .pricing {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .pricing input {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .pricing span {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    /* Testiominialo */
+    .testimonial-container {
+      position: relative;
+      /* max-width: 800px; */
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .testimonial-slider {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .testimonial-slide {
+      min-width: 100%;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .testimonial-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .google-icon {
+      height: 20px;
+      width: 20px;
+    }
+
+    .stars {
+      color: #f39c12;
+      font-weight: bold;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #d2e0ed;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 18px;
+      width: 38px;
+    }
+
+    .arrow.left {
+      left: 10px;
+      z-index: 99;
+    }
+
+    .arrow.right {
+      right: 10px;
+      z-index: 99;
+    }
+
+    .pagination {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .pagination .dot {
+      height: 12px;
+      width: 12px;
+      margin: 0 5px;
+      background-color: #ccc;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .pagination .dot.active {
+      background-color: #007bff;
+    }
+
+    .footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container"></div>
+    <img src="/images/logo.png" alt="CashOffrs Logo">
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    </div>
+    <nav>
+      <a href="#" style="color: #007bff;;">Sell</a>
+      <a href="#">Investors</a>
+      <a href="#">Agent</a>
+      <a href="#">About</a>
+      <a href="#">Search Properties</a>
+      <a href="#"> <img src="/images/phone.png" alt="phone Logo" height="35" width="30"> (855) 916-5043</a>
+      <a href="#"><button>Register</button></a>
+      <a href="#"><button class="signin">Sign In</button></a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1><span style="color: #254c86;">SoCal's #1 Platform For</span> <br /> <span>Selling Off-Market Properties</h1></span>
+    <p>Manage no-risk offers through an unparalleled dashboard.<br /> Absolutely ZERO commissions.</p>
+    <div class="input-container">
+      <input type="text" placeholder="Enter your address">
+      <button>Get Cash Offer</button>
+    </div>
+    <img src="images/home.png" alt="How to Sell Your Property" style="width: 100%;">
+
+  </section>
+
+
+  <section class="section" style="background-color: #f1f5f8;">
+    <h2><span style="color: #41526c; font-weight: 100;">How To Sell Your Property </span> <span style="color: #2a4887;"> With Cash Offrs </span></h2>
+    <hr style="width: 40px; margin-top: -21px; border: 1px solid #3787b0;"/>
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+      <div style="flex: 1; max-width: 500px; padding: 10px;">
+        <img src="images/sellhouse.png" alt="How to Sell Your Property" style="width: 100%; border-radius: 8px;">
+      </div>
+      <div style="flex: 1; max-width: 500px; padding: 10px;">
+        <ul style="list-style-type: none; padding: 0; text-align: left;">
+          <li style="margin: 20px 0; font-size: 1.2rem;">
+            <strong>Step 1:</strong>
+            <div style="display: flex;align-items: center;">
+              <img src="images/step1.png" alt="How to Sell Your Property" height="50" width="55">
+              <p>Create Seller Account</p>
+            </div>
+          </li>
+          <li style="margin: 20px 0; font-size: 1.2rem;">
+            <strong>Step 2:</strong>
+            <div style="display: flex;align-items: center;">
+              <img src="images/step2.png" alt="How to Sell Your Property" height="50" width="55">
+              <p>Email 5 Photos to <a href="mailto:support@cashoffrs.com">support@cashoffrs.com</a></p>
+            </div>
+          </li>
+          <li style="margin: 20px 0; font-size: 1.2rem;">
+            <strong>Step 3:</strong>
+            <div style="display: flex;align-items: center;">
+              <img src="images/step3.png" alt="How to Sell Your Property" height="50" width="55">
+              <p>Receive multiple Cash Offers within 24 Hours</a></p>
+            </div>
+
+
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+      <p>Your Listing Is Marketed To Hundreds of Local Investors And <br />
+        Agents To Increase Your Properties Exposure To Motivated Buyers.</p>
+      <button
+        style="padding: 10px 20px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; font-size: 1.2rem; cursor: pointer;">
+        Sell My House
+      </button>
+    </div>
+  </section>
+
+
+  <section class="section" style="background-color: #fff;">
+    <h2>No Matter The Situation, Cash Offrs Will Get Your Property Sold!</h2>
+    <div class="cards">
+
+      <img src="images/nomatter.png" alt="How to Sell Your Property" style="width: 100%; border-radius: 8px;">
+    </div>
+    <button> Lwarn More</button>
+  </section>
+
+
+  <section class="section" style="background-color: #f1f5f8;">
+    <h2>Testimonials From Happy Clients</h2>
+    <div class="testimonial-container">
+      <button class="arrow left" onclick="moveSlide(-1)">&lt;</button>
+      <div class="testimonial-slider">
+        <div class="testimonial-slide">
+          <p>"CashOffrs helped me sell my property quickly and hassle-free. Highly recommend!"</p>
+          <div class="testimonial-info">
+            <span>John Doe</span>
+            <!-- <img src="images/google-icon.png" alt="Google Icon" class="google-icon">
+            <span class="stars">★★★★★</span> -->
+          </div>
+        </div>
+        <div class="testimonial-slide">
+          <p>"CashOffrs helped me sell my property quickly and hassle-free. Highly recommend!"</p>
+          <div class="testimonial-info">
+            <span>John Doe</span>
+            <!-- <img src="images/google-icon.png" alt="Google Icon" class="google-icon">
+            <span class="stars">★★★★★</span> -->
+          </div>
+        </div>
+        <div class="testimonial-slide">
+          <p>"CashOffrs helped me sell my property quickly and hassle-free. Highly recommend!"</p>
+          <div class="testimonial-info">
+            <span>John Doe</span>
+            <!-- <img src="images/google-icon.png" alt="Google Icon" class="google-icon">
+            <span class="stars">★★★★★</span> -->
+          </div>
+        </div>
+  
+      </div>
+      <button class="arrow right" onclick="moveSlide(1)">&gt;</button>
+    </div>
+    <div class="pagination">
+      <span class="dot" onclick="setSlide(0)"></span>
+      <span class="dot" onclick="setSlide(1)"></span>
+      <span class="dot" onclick="setSlide(2)"></span>
+    </div>
+  </section>
+
+
+</body>
+
+<script>
+  function toggleMenu() {
+    const nav = document.querySelector('header nav');
+    nav.classList.toggle('visible'); // Toggle the 'visible' class to show/hide the menu
+  }
+</script>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.testimonial-slide');
+  const dots = document.querySelectorAll('.dot');
+
+  function updateSlider() {
+    const slider = document.querySelector('.testimonial-slider');
+    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentSlide);
+    });
+  }
+
+  function moveSlide(direction) {
+    currentSlide = (currentSlide + direction + slides.length) % slides.length;
+    updateSlider();
+  }
+
+  function setSlide(index) {
+    currentSlide = index;
+    updateSlider();
+  }
+
+  // Initialize slider
+  updateSlider();
+</script>
+
+</html>
