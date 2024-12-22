@@ -12,7 +12,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 30px;
+    padding: 20px;
     background-color: #f7f8fa;
     flex-wrap: wrap;
 }
@@ -168,6 +168,13 @@ header nav.hidden {
     margin-right: 3px;
 }
 
+@media (max-width: 400px) {
+    .hero button {
+        font-size: 11px;
+        padding: 10px;
+    }
+}
+
 .section {
     padding: 50px 20px;
     background-color: #fff;
@@ -315,6 +322,12 @@ header nav.hidden {
     cursor: pointer;
 }
 
+@media (max-width: 600px) {
+    .cta-button {
+        font-size: 1rem;
+    }
+}
+
 .cta-sell {
     background-color: #007bff;
     color: #fff;
@@ -336,6 +349,12 @@ header nav.hidden {
     border-radius: 20px;
     font-size: 1.2rem;
     cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .learn-btn {
+        font-size: 1rem;
+    }
 }
 
 
